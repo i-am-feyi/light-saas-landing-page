@@ -69,7 +69,7 @@ export const Pricing = () => {
             ({ buttonText, features, inverse, monthlyPrice, popular, title }) => (
               <div
                 className={twMerge(
-                  "p-10 border border-[#f1f1f1] rounded-3xl shadow-[0_7px_14px_#eaeaea] max-w-xs w-full",
+                  "card",
                   inverse === true && "border-black bg-black text-white"
                 )}
               >
