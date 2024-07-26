@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { twMerge } from "tailwind-merge";
 import avatar1 from "@/assets/avatar-1.png";
 import avatar2 from "@/assets/avatar-2.png";
 import avatar3 from "@/assets/avatar-3.png";
@@ -105,6 +104,7 @@ const TestimonialsColumn = (props: {
 }) => (
   <div className={props.className}>
     <motion.div
+      className="flex flex-col gap-6 pb-6"
       animate={{
         translateY: "-50%",
       }}
@@ -114,7 +114,6 @@ const TestimonialsColumn = (props: {
         ease: "linear",
         repeatType: "loop",
       }}
-      className="flex flex-col gap-6 pb-6"
     >
       {props.testimonials.map(({ imageSrc, name, text, username }) => (
         <>
