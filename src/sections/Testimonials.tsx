@@ -11,6 +11,7 @@ import avatar6 from "@/assets/avatar-6.png";
 import avatar7 from "@/assets/avatar-7.png";
 import avatar8 from "@/assets/avatar-8.png";
 import avatar9 from "@/assets/avatar-9.png";
+import React from "react";
 
 const testimonials = [
   {
@@ -97,7 +98,7 @@ const SingleTestimonial = (props: {
   </div>
 );
 
-const TestimonialsColumn = (props: {
+export const TestimonialsColumn = (props: {
   className?: string;
   testimonials: typeof testimonials;
   duration?: number;
@@ -115,21 +116,27 @@ const TestimonialsColumn = (props: {
         repeatType: "loop",
       }}
     >
-      {props.testimonials.map(({ imageSrc, name, text, username }) => (
-        <>
-          <SingleTestimonial
-            imageSrc={imageSrc}
-            name={name}
-            text={text}
-            username={username}
-          />
-          <SingleTestimonial
-            imageSrc={imageSrc}
-            name={name}
-            text={text}
-            username={username}
-          />
-        </>
+      {[...new Array(2)].fill(0).map((_, index) => (
+        <React.Fragment key={index}>
+          {props.testimonials.map(({ imageSrc, name, text, username }) => (
+            <div key={username} className="card">
+              <div> {text} </div>
+              <div className="flex items-center gap-2 mt-5">
+                <Image
+                  src={imageSrc}
+                  width={40}
+                  height={40}
+                  alt={name}
+                  className="size-10"
+                />
+                <div className="flex flex-col">
+                  <div className="font-medium tracking-tight leading-5">{name}</div>
+                  <p className="leading-5 tracking-tight">{username}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </React.Fragment>
       ))}
     </motion.div>
   </div>
